@@ -90,6 +90,12 @@
 			null
 		],
 		[
+			"E:/QT/self_code/Landlords/cards.h",
+			"MU",
+			"EWIEGA46WW/moc_cards.cpp",
+			null
+		],
+		[
 			"E:/QT/self_code/Landlords/gamepanel.h",
 			"MU",
 			"EWIEGA46WW/moc_gamepanel.cpp",
@@ -155,6 +161,7 @@
 	[
 		[ "E:/QT/self_code/Landlords/card.cpp", "MU", null ],
 		[ "E:/QT/self_code/Landlords/cardpanel.cpp", "MU", null ],
+		[ "E:/QT/self_code/Landlords/cards.cpp", "MU", null ],
 		[ "E:/QT/self_code/Landlords/gamepanel.cpp", "MU", null ],
 		[ "E:/QT/self_code/Landlords/main.cpp", "MU", null ],
 		[ "E:/QT/self_code/Landlords/player.cpp", "MU", null ]

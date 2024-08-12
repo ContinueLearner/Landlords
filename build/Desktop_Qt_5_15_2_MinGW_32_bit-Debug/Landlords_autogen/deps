@@ -1,5 +1,6 @@
 Landlords_autogen/timestamp: \
 	E:/QT/QtApp/5.15.2/mingw81_32/include/QtCore/QObject \
+	E:/QT/QtApp/5.15.2/mingw81_32/include/QtCore/QVector \
 	E:/QT/QtApp/5.15.2/mingw81_32/include/QtCore/qalgorithms.h \
 	E:/QT/QtApp/5.15.2/mingw81_32/include/QtCore/qarraydata.h \
 	E:/QT/QtApp/5.15.2/mingw81_32/include/QtCore/qatomic.h \
@@ -325,6 +326,8 @@ Landlords_autogen/timestamp: \
 	E:/QT/self_code/Landlords/card.h \
 	E:/QT/self_code/Landlords/cardpanel.cpp \
 	E:/QT/self_code/Landlords/cardpanel.h \
+	E:/QT/self_code/Landlords/cards.cpp \
+	E:/QT/self_code/Landlords/cards.h \
 	E:/QT/self_code/Landlords/gamepanel.cpp \
 	E:/QT/self_code/Landlords/gamepanel.h \
 	E:/QT/self_code/Landlords/main.cpp \

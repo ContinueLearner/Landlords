@@ -97,6 +97,14 @@ build CMakeFiles/Landlords.dir/player.cpp.obj: CXX_COMPILER__Landlords_unscanned
   OBJECT_DIR = CMakeFiles\Landlords.dir
   OBJECT_FILE_DIR = CMakeFiles\Landlords.dir
 
+build CMakeFiles/Landlords.dir/cards.cpp.obj: CXX_COMPILER__Landlords_unscanned_Debug E$:/QT/self_code/Landlords/cards.cpp || cmake_object_order_depends_target_Landlords
+  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB
+  DEP_FILE = CMakeFiles\Landlords.dir\cards.cpp.obj.d
+  FLAGS = -DQT_QML_DEBUG -g -std=gnu++17 -fdiagnostics-color=always
+  INCLUDES = -IE:/QT/self_code/Landlords/build/Desktop_Qt_5_15_2_MinGW_32_bit-Debug/Landlords_autogen/include -isystem E:/QT/QtApp/5.15.2/mingw81_32/include -isystem E:/QT/QtApp/5.15.2/mingw81_32/include/QtWidgets -isystem E:/QT/QtApp/5.15.2/mingw81_32/include/QtGui -isystem E:/QT/QtApp/5.15.2/mingw81_32/include/QtANGLE -isystem E:/QT/QtApp/5.15.2/mingw81_32/include/QtCore -isystem E:/QT/QtApp/5.15.2/mingw81_32/./mkspecs/win32-g++
+  OBJECT_DIR = CMakeFiles\Landlords.dir
+  OBJECT_FILE_DIR = CMakeFiles\Landlords.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Landlords
@@ -105,7 +113,7 @@ build CMakeFiles/Landlords.dir/player.cpp.obj: CXX_COMPILER__Landlords_unscanned
 #############################################
 # Link the executable Landlords.exe
 
-build Landlords.exe: CXX_EXECUTABLE_LINKER__Landlords_Debug CMakeFiles/Landlords.dir/Landlords_autogen/mocs_compilation.cpp.obj CMakeFiles/Landlords.dir/main.cpp.obj CMakeFiles/Landlords.dir/gamepanel.cpp.obj CMakeFiles/Landlords.dir/card.cpp.obj CMakeFiles/Landlords.dir/cardpanel.cpp.obj CMakeFiles/Landlords.dir/player.cpp.obj | E$:/QT/QtApp/5.15.2/mingw81_32/lib/libQt5Widgets.a E$:/QT/QtApp/5.15.2/mingw81_32/lib/libQt5Gui.a E$:/QT/QtApp/5.15.2/mingw81_32/lib/libQt5Core.a E$:/QT/QtApp/5.15.2/mingw81_32/lib/libqtmain.a || Landlords_autogen Landlords_autogen_timestamp_deps
+build Landlords.exe: CXX_EXECUTABLE_LINKER__Landlords_Debug CMakeFiles/Landlords.dir/Landlords_autogen/mocs_compilation.cpp.obj CMakeFiles/Landlords.dir/main.cpp.obj CMakeFiles/Landlords.dir/gamepanel.cpp.obj CMakeFiles/Landlords.dir/card.cpp.obj CMakeFiles/Landlords.dir/cardpanel.cpp.obj CMakeFiles/Landlords.dir/player.cpp.obj CMakeFiles/Landlords.dir/cards.cpp.obj | E$:/QT/QtApp/5.15.2/mingw81_32/lib/libQt5Widgets.a E$:/QT/QtApp/5.15.2/mingw81_32/lib/libQt5Gui.a E$:/QT/QtApp/5.15.2/mingw81_32/lib/libQt5Core.a E$:/QT/QtApp/5.15.2/mingw81_32/lib/libqtmain.a || Landlords_autogen Landlords_autogen_timestamp_deps
   FLAGS = -DQT_QML_DEBUG -g
   LINK_FLAGS = -mwindows
   LINK_LIBRARIES = E:/QT/QtApp/5.15.2/mingw81_32/lib/libQt5Widgets.a  E:/QT/QtApp/5.15.2/mingw81_32/lib/libQt5Gui.a  E:/QT/QtApp/5.15.2/mingw81_32/lib/libQt5Core.a  E:/QT/QtApp/5.15.2/mingw81_32/lib/libqtmain.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32

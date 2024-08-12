@@ -476,11 +476,13 @@ E:/QT/self_code/Landlords/player.h
  mdp:E:/QT/self_code/Landlords/player.h
 E:/QT/self_code/Landlords/gamepanel.cpp
  uic:./ui_gamepanel.h
+E:/QT/self_code/Landlords/cards.cpp
 E:/QT/self_code/Landlords/card.h
 E:/QT/self_code/Landlords/card.cpp
 E:/QT/self_code/Landlords/cardpanel.h
  mmc:Q_OBJECT
  mdp:E:/QT/QtApp/5.15.2/mingw81_32/include/QtCore/QObject
+ mdp:E:/QT/QtApp/5.15.2/mingw81_32/include/QtCore/QVector
  mdp:E:/QT/QtApp/5.15.2/mingw81_32/include/QtCore/qalgorithms.h
  mdp:E:/QT/QtApp/5.15.2/mingw81_32/include/QtCore/qarraydata.h
  mdp:E:/QT/QtApp/5.15.2/mingw81_32/include/QtCore/qatomic.h
@@ -743,3 +745,4 @@ E:/QT/self_code/Landlords/cardpanel.h
  mdp:E:/QT/self_code/Landlords/player.h
 E:/QT/self_code/Landlords/cardpanel.cpp
 E:/QT/self_code/Landlords/player.cpp
+E:/QT/self_code/Landlords/cards.h

@@ -1,6 +1,7 @@
 E:/QT/self_code/Landlords/build/Desktop_Qt_5_15_2_MinGW_32_bit-Debug/Landlords_autogen/EWIEGA46WW/moc_cardpanel.cpp: E:/QT/self_code/Landlords/cardpanel.h \
   E:/QT/self_code/Landlords/build/Desktop_Qt_5_15_2_MinGW_32_bit-Debug/Landlords_autogen/moc_predefs.h \
   E:/QT/QtApp/5.15.2/mingw81_32/include/QtCore/QObject \
+  E:/QT/QtApp/5.15.2/mingw81_32/include/QtCore/QVector \
   E:/QT/QtApp/5.15.2/mingw81_32/include/QtCore/qalgorithms.h \
   E:/QT/QtApp/5.15.2/mingw81_32/include/QtCore/qarraydata.h \
   E:/QT/QtApp/5.15.2/mingw81_32/include/QtCore/qatomic.h \
