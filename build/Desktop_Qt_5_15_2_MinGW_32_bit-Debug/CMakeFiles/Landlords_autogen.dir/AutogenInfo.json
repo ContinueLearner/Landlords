@@ -96,6 +96,12 @@
 			null
 		],
 		[
+			"E:/QT/self_code/Landlords/gamecontrol.h",
+			"MU",
+			"EWIEGA46WW/moc_gamecontrol.cpp",
+			null
+		],
+		[
 			"E:/QT/self_code/Landlords/gamepanel.h",
 			"MU",
 			"EWIEGA46WW/moc_gamepanel.cpp",
@@ -105,6 +111,18 @@
 			"E:/QT/self_code/Landlords/player.h",
 			"MU",
 			"EWIEGA46WW/moc_player.cpp",
+			null
+		],
+		[
+			"E:/QT/self_code/Landlords/robot.h",
+			"MU",
+			"EWIEGA46WW/moc_robot.cpp",
+			null
+		],
+		[
+			"E:/QT/self_code/Landlords/userplayer.h",
+			"MU",
+			"EWIEGA46WW/moc_userplayer.cpp",
 			null
 		]
 	],
@@ -162,9 +180,12 @@
 		[ "E:/QT/self_code/Landlords/card.cpp", "MU", null ],
 		[ "E:/QT/self_code/Landlords/cardpanel.cpp", "MU", null ],
 		[ "E:/QT/self_code/Landlords/cards.cpp", "MU", null ],
+		[ "E:/QT/self_code/Landlords/gamecontrol.cpp", "MU", null ],
 		[ "E:/QT/self_code/Landlords/gamepanel.cpp", "MU", null ],
 		[ "E:/QT/self_code/Landlords/main.cpp", "MU", null ],
-		[ "E:/QT/self_code/Landlords/player.cpp", "MU", null ]
+		[ "E:/QT/self_code/Landlords/player.cpp", "MU", null ],
+		[ "E:/QT/self_code/Landlords/robot.cpp", "MU", null ],
+		[ "E:/QT/self_code/Landlords/userplayer.cpp", "MU", null ]
 	],
 	"UIC_OPTIONS" : [],
 	"UIC_SEARCH_PATHS" : [],

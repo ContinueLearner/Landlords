@@ -44,6 +44,7 @@ public:
     CardPoint getPoint()const;
 
     Card();
+    Card(CardPoint p,CardSuit s);
 private:
     CardSuit suit;
     CardPoint point;

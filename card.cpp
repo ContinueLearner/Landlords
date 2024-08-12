@@ -22,6 +22,12 @@ Card::CardPoint Card::getPoint()const
 
 Card::Card() {}
 
+Card::Card( CardPoint p,CardSuit s)
+{
+    this->point = p;
+    this->suit = s;
+}
+
 
 bool operator==(const Card& c1,const Card& c2)
 {

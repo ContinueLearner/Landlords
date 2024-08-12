@@ -1,5 +1,6 @@
 Landlords_autogen/timestamp: \
 	E:/QT/QtApp/5.15.2/mingw81_32/include/QtCore/QObject \
+	E:/QT/QtApp/5.15.2/mingw81_32/include/QtCore/QSet \
 	E:/QT/QtApp/5.15.2/mingw81_32/include/QtCore/QVector \
 	E:/QT/QtApp/5.15.2/mingw81_32/include/QtCore/qalgorithms.h \
 	E:/QT/QtApp/5.15.2/mingw81_32/include/QtCore/qarraydata.h \
@@ -40,6 +41,7 @@ Landlords_autogen/timestamp: \
 	E:/QT/QtApp/5.15.2/mingw81_32/include/QtCore/qrefcount.h \
 	E:/QT/QtApp/5.15.2/mingw81_32/include/QtCore/qregexp.h \
 	E:/QT/QtApp/5.15.2/mingw81_32/include/QtCore/qscopedpointer.h \
+	E:/QT/QtApp/5.15.2/mingw81_32/include/QtCore/qset.h \
 	E:/QT/QtApp/5.15.2/mingw81_32/include/QtCore/qshareddata.h \
 	E:/QT/QtApp/5.15.2/mingw81_32/include/QtCore/qsharedpointer.h \
 	E:/QT/QtApp/5.15.2/mingw81_32/include/QtCore/qsharedpointer_impl.h \
@@ -328,10 +330,16 @@ Landlords_autogen/timestamp: \
 	E:/QT/self_code/Landlords/cardpanel.h \
 	E:/QT/self_code/Landlords/cards.cpp \
 	E:/QT/self_code/Landlords/cards.h \
+	E:/QT/self_code/Landlords/gamecontrol.cpp \
+	E:/QT/self_code/Landlords/gamecontrol.h \
 	E:/QT/self_code/Landlords/gamepanel.cpp \
 	E:/QT/self_code/Landlords/gamepanel.h \
 	E:/QT/self_code/Landlords/main.cpp \
 	E:/QT/self_code/Landlords/player.cpp \
 	E:/QT/self_code/Landlords/player.h \
+	E:/QT/self_code/Landlords/robot.cpp \
+	E:/QT/self_code/Landlords/robot.h \
+	E:/QT/self_code/Landlords/userplayer.cpp \
+	E:/QT/self_code/Landlords/userplayer.h \
 	E:/QT/self_code/Landlords/gamepanel.ui \
 	E:/QT/QtApp/Tools/CMake_64/bin/cmake.exe

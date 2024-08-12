@@ -1,6 +1,7 @@
 E:/QT/self_code/Landlords/build/Desktop_Qt_5_15_2_MinGW_32_bit-Debug/Landlords_autogen/EWIEGA46WW/moc_cardpanel.cpp: E:/QT/self_code/Landlords/cardpanel.h \
   E:/QT/self_code/Landlords/build/Desktop_Qt_5_15_2_MinGW_32_bit-Debug/Landlords_autogen/moc_predefs.h \
   E:/QT/QtApp/5.15.2/mingw81_32/include/QtCore/QObject \
+  E:/QT/QtApp/5.15.2/mingw81_32/include/QtCore/QSet \
   E:/QT/QtApp/5.15.2/mingw81_32/include/QtCore/QVector \
   E:/QT/QtApp/5.15.2/mingw81_32/include/QtCore/qalgorithms.h \
   E:/QT/QtApp/5.15.2/mingw81_32/include/QtCore/qarraydata.h \
@@ -41,6 +42,7 @@ E:/QT/self_code/Landlords/build/Desktop_Qt_5_15_2_MinGW_32_bit-Debug/Landlords_a
   E:/QT/QtApp/5.15.2/mingw81_32/include/QtCore/qrefcount.h \
   E:/QT/QtApp/5.15.2/mingw81_32/include/QtCore/qregexp.h \
   E:/QT/QtApp/5.15.2/mingw81_32/include/QtCore/qscopedpointer.h \
+  E:/QT/QtApp/5.15.2/mingw81_32/include/QtCore/qset.h \
   E:/QT/QtApp/5.15.2/mingw81_32/include/QtCore/qshareddata.h \
   E:/QT/QtApp/5.15.2/mingw81_32/include/QtCore/qsharedpointer.h \
   E:/QT/QtApp/5.15.2/mingw81_32/include/QtCore/qsharedpointer_impl.h \
@@ -259,4 +261,5 @@ E:/QT/self_code/Landlords/build/Desktop_Qt_5_15_2_MinGW_32_bit-Debug/Landlords_a
   E:/QT/QtApp/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/stddef.h \
   E:/QT/QtApp/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/stdint.h \
   E:/QT/self_code/Landlords/card.h \
+  E:/QT/self_code/Landlords/cards.h \
   E:/QT/self_code/Landlords/player.h
