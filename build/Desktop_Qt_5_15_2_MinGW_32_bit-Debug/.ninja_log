@@ -1,0 +1,20 @@
+# ninja log v6
+17	154	7451327858953407	Landlords_autogen/timestamp	83d2e3df2d865368
+155	1343	7451327860351475	CMakeFiles/Landlords.dir/gamepanel.cpp.obj	f03ccbe42da75c59
+17	154	7451327858953407	Landlords_autogen/mocs_compilation.cpp	83d2e3df2d865368
+17	154	7451327858953407	E:/QT/self_code/Landlords/build/Desktop_Qt_5_15_2_MinGW_32_bit-Debug/Landlords_autogen/timestamp	83d2e3df2d865368
+17	154	7451327858953407	E:/QT/self_code/Landlords/build/Desktop_Qt_5_15_2_MinGW_32_bit-Debug/Landlords_autogen/mocs_compilation.cpp	83d2e3df2d865368
+402	1501	7451321435293189	CMakeFiles/Landlords.dir/Landlords_autogen/mocs_compilation.cpp.obj	6342814fd60aadd7
+406	1584	7451321435293189	CMakeFiles/Landlords.dir/main.cpp.obj	d022af139890d6fb
+1343	1544	7451327872237645	Landlords.exe	5a1a68508fb368ac
+159	206	7451327860392018	CMakeFiles/Landlords.dir/card.cpp.obj	906f767b8964f874
+17	369	7451344427887848	Landlords_autogen/timestamp	83d2e3df2d865368
+17	369	7451344427887848	Landlords_autogen/mocs_compilation.cpp	83d2e3df2d865368
+17	369	7451344427887848	E:/QT/self_code/Landlords/build/Desktop_Qt_5_15_2_MinGW_32_bit-Debug/Landlords_autogen/timestamp	83d2e3df2d865368
+17	369	7451344427887848	E:/QT/self_code/Landlords/build/Desktop_Qt_5_15_2_MinGW_32_bit-Debug/Landlords_autogen/mocs_compilation.cpp	83d2e3df2d865368
+377	463	7451344428619123	CMakeFiles/Landlords.dir/card.cpp.obj	906f767b8964f874
+385	2020	7451344428670174	CMakeFiles/Landlords.dir/player.cpp.obj	22106486870398b1
+370	2638	7451344428549118	CMakeFiles/Landlords.dir/Landlords_autogen/mocs_compilation.cpp.obj	6342814fd60aadd7
+380	2688	7451344428649845	CMakeFiles/Landlords.dir/cardpanel.cpp.obj	92cfdce59f4e32fe
+374	2827	7451344428589114	CMakeFiles/Landlords.dir/gamepanel.cpp.obj	f03ccbe42da75c59
+2827	3178	7451344453125409	Landlords.exe	48914944b0a66a4f
