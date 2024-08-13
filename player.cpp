@@ -101,6 +101,13 @@ Player *Player::getNextPlayer()
     return m_next;
 }
 
+void Player::storeDispatchCard(const Card &card)
+{
+    m_cards.add(card);
+    Cards cs;
+    cs.add(card);
+}
+
 
 
 Cards Player::getCards()

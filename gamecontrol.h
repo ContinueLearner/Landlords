@@ -65,6 +65,9 @@ public:
 
     // 处理出牌
 
+signals:
+    // 通知玩家抢地主了
+    void playerStatusChanged(Player* player, PlayerStatus status);
 
 
 private:

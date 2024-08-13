@@ -7,6 +7,11 @@ Cards::Cards()
 
 }
 
+Cards::Cards(const Card &card)
+{
+    add(card);
+}
+
 void Cards::add(const Card &card)
 {
     m_cards.insert(card);
@@ -75,9 +80,12 @@ Card::CardPoint Cards::maxPoint()
     Card::CardPoint max = Card::Point_Begin;
     if(!m_cards.isEmpty())
     {
-        for(auto point:this->m_cards)
+        for(auto it = m_cards.begin(); it!=m_cards.end(); ++it)
         {
-            if(point.getPoint() > max)max = point.getPoint();
+            if(it->getPoint() > max)
+            {
+                max = it->getPoint();
+            }
         }
     }
     return max;
@@ -88,9 +96,12 @@ Card::CardPoint Cards::minPoint()
     Card::CardPoint min = Card::Point_End;
     if(!m_cards.isEmpty())
     {
-        for(auto point:this->m_cards)
+        for(auto it = m_cards.begin(); it!=m_cards.end(); ++it)
         {
-            if(point.getPoint() < min)min = point.getPoint();
+            if(it->getPoint() < min)
+            {
+                min = it->getPoint();
+            }
         }
     }
     return min;
@@ -99,9 +110,12 @@ Card::CardPoint Cards::minPoint()
 int Cards::pointCount(Card::CardPoint point)
 {
     int count = 0;
-    for(auto _point:this->m_cards)
+    for(auto it = m_cards.begin(); it!=m_cards.end(); ++it)
     {
-        if(_point.getPoint() == point)count++;
+        if(it->getPoint() == point)
+        {
+            count++;
+        }
     }
     return count;
 }
@@ -130,18 +144,19 @@ Card Cards::takeRandomCard()
 CardList Cards::toCardList(SortType type)
 {
     CardList list;
-    for(auto point:this->m_cards)
+    for(auto it = m_cards.begin(); it != m_cards.end(); ++it)
     {
-        list<<point;
+        list << *it;
     }
     if(type == Asc)
     {
-        std::sort(list.begin(),list.end(),lessSort);
+        std::sort(list.begin(), list.end(), lessSort);
     }
     else if(type == Desc)
     {
-        std::sort(list.begin(),list.end(),greaterSort);
+        std::sort(list.begin(), list.end(), greaterSort);
     }
+    return list;
 }
 
 void Cards::printAllCardInfo()

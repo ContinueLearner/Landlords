@@ -98,6 +98,11 @@ void GameControl::initAllCards()
     m_allCards.add(Card(Card::Point_BJ, Card::Suit_Begin));
 }
 
+Card GameControl::takeOneCard()
+{
+    return m_allCards.takeRandomCard();
+}
+
 Cards GameControl::getSurplusCards()
 {
     return m_allCards;
@@ -114,6 +119,12 @@ void GameControl::resetCardData()
     // 初始化出牌玩家和牌
     m_pendPlayer = nullptr;
     m_pendCards.clear();
+}
+
+void GameControl::startLordCard()
+{
+    m_currPlayer->prepareCallLord();
+    emit playerStatusChanged(m_currPlayer,ThinkingForCallLord);
 }
 
 void GameControl::clearPlayerScore()

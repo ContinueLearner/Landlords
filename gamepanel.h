@@ -9,6 +9,7 @@
 #include <CardPanel.h>
 #include <QMap>
 #include <QLabel>
+#include <QTimer>
 
 namespace Ui {
 class GamePanel;
@@ -36,6 +37,20 @@ public:
     void initPlayerContext();
     // 初始化游戏场景
     void initGameScene();
+    // 处理游戏的状态
+    void gameStatusPrecess(GameControl::GameStatus status);
+    // 发牌
+    void startDispatchCard();
+    // 移动扑克牌
+    void cardMoveStep(Player* player, int curPos);
+    // 处理分发得到的扑克牌
+    void disposeCard(Player* player, const Cards& cards);
+    // 更新扑克牌在窗口中的显示
+    void updatePlayerCards(Player* player);
+
+    void onDispatchCard();
+    // 处理玩家状态的变化
+    void onPlayerStatusChanged(Player* player, GameControl::PlayerStatus status);
 protected:
     void paintEvent(QPaintEvent* ev);
 
@@ -71,6 +86,8 @@ private:
     CardPanel* m_moveCard;
     QVector<CardPanel*> m_last3Card;
     QPoint m_baseCardPos;
+    GameControl::GameStatus m_gameStatus;
+    QTimer* m_timer;
 };
 
 #endif // GAMEPANEL_H
