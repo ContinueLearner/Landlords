@@ -1,4 +1,4 @@
-#include "gamepanel.h"
+#include "GamePanel.h"
 
 #include <QApplication>
 
