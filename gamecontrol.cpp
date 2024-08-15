@@ -45,6 +45,10 @@ void GameControl::playerInit()
     // 指定当前玩家
     m_currPlayer = m_user;
 
+    // 处理玩家发射出的信号
+    connect(m_user, &UserPlayer::notifyGrabLordBet, this, &GameControl::onGrabBet);
+    connect(m_robotLeft, &UserPlayer::notifyGrabLordBet, this, &GameControl::onGrabBet);
+    connect(m_robotRight, &UserPlayer::notifyGrabLordBet, this, &GameControl::onGrabBet);
 }
 
 
@@ -127,11 +131,93 @@ void GameControl::startLordCard()
     emit playerStatusChanged(m_currPlayer,ThinkingForCallLord);
 }
 
+void GameControl::becomeLord(Player *player, int bet)
+{
+    m_curBet = bet;
+    player->setRole(Player::Lord);
+    player->getPrevPlayer()->setRole(Player::Farmer);
+    player->getNextPlayer()->setRole(Player::Farmer);
+
+    m_currPlayer = player;
+    player->storeDispatchCard(m_allCards);
+
+    QTimer::singleShot(1000, this, [=]()
+                       {
+                           emit gameStatusChanged(PlayingHand);
+                           emit playerStatusChanged(player, ThinkingForPlayHand);
+                           m_currPlayer->preparePlayHand();
+                       });
+}
+
 void GameControl::clearPlayerScore()
 {
     m_robotLeft->setScore(0);
     m_robotRight->setScore(0);
     m_user->setScore(0);
+}
+
+int GameControl::getPlayerMaxBet()
+{
+    return m_betRecord.bet;
+}
+
+void GameControl::onGrabBet(Player *player, int bet)
+{
+    // 1. 通知主界面玩家叫地主了(更新信息提示)
+    if(bet == 0 || m_betRecord.bet >= bet)
+    {
+        emit notifyGrabLordBet(player, 0, false);
+    }
+    else if(bet > 0 && m_betRecord.bet == 0)
+    {
+        // 第一个抢地主的玩家
+        emit notifyGrabLordBet(player, bet, true);
+    }
+    else
+    {
+        // 第2,3个抢地主的玩家
+        emit notifyGrabLordBet(player, bet, false);
+    }
+
+    qDebug() << "curent player name: " << player->getName() << ", 下注分数: "
+             << bet<< ", m_betRecord.times: " << m_betRecord.times;
+
+
+    // 2. 判断玩家下注是不是3分, 如果是抢地主结束
+    if(bet == 3)
+    {
+        // 玩家成为地主
+        becomeLord(player, bet);
+        // 清空数据
+        m_betRecord.reset();
+        return;
+    }
+    // 3. 下注不够3分, 对玩家的分数进行比较, 分数高的是地主
+    if(m_betRecord.bet < bet)
+    {
+        m_betRecord.bet = bet;
+        m_betRecord.player = player;
+    }
+    m_betRecord.times ++;
+    // 如果每个玩家都抢过一次地主, 抢地主结束
+    if(m_betRecord.times == 3)
+    {
+        if(m_betRecord.bet == 0)
+        {
+            emit gameStatusChanged(DispatchCard);
+        }
+        else
+        {
+            becomeLord(m_betRecord.player, m_betRecord.bet);
+        }
+        m_betRecord.reset();
+        return;
+    }
+    // 4. 切换玩家, 通知下一个玩家继续抢地主
+    m_currPlayer = player->getNextPlayer();
+    // 发送信号给主界面, 告知当前状态为抢地主
+    emit playerStatusChanged(m_currPlayer, ThinkingForCallLord);
+    m_currPlayer->prepareCallLord();
 }
 
 

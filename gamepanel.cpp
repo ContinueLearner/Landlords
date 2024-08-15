@@ -56,7 +56,8 @@ void GamePanel::gameControlInit()
     m_playerList << leftRobot << rightRobot << user;
 
     connect(m_gameCtl,&GameControl::playerStatusChanged,this,&GamePanel::onPlayerStatusChanged);
-
+    connect(m_gameCtl, &GameControl::notifyGrabLordBet, this, &GamePanel::onGrabLordBet);
+    connect(m_gameCtl, &GameControl::gameStatusChanged, this, &GamePanel::gameStatusPrecess);
 }
 
 void GamePanel::updatePlayerScore()
@@ -122,7 +123,9 @@ void GamePanel::initButtonsGroup()
     });
     connect(ui->btnGroup, &ButtonGroup::playHand, this, [=](){});
     connect(ui->btnGroup, &ButtonGroup::pass, this, [=](){});
-    connect(ui->btnGroup, &ButtonGroup::betPoint, this, [=](){});
+    connect(ui->btnGroup, &ButtonGroup::betPoint, this, [=](int bet){
+        m_gameCtl->getUserPlayer()->grabLordBet(bet);
+    });
 }
 
 void GamePanel::initPlayerContext()
@@ -390,7 +393,7 @@ void GamePanel::onPlayerStatusChanged(Player *player, GameControl::PlayerStatus 
     case GameControl::ThinkingForCallLord:
         if(player == m_gameCtl->getUserPlayer())
         {
-            ui->btnGroup->selectPanel(ButtonGroup::CallLord);
+            ui->btnGroup->selectPanel(ButtonGroup::CallLord, m_gameCtl->getPlayerMaxBet());
         }
         break;
     case GameControl::ThinkingForPlayHand:
@@ -400,6 +403,28 @@ void GamePanel::onPlayerStatusChanged(Player *player, GameControl::PlayerStatus 
     default:
         break;
     }
+}
+
+void GamePanel::onGrabLordBet(Player *player, int bet, bool flag)
+{
+    // 显示抢地主的信息提示
+    PlayerContext context = m_contextMap[player];
+    if(bet == 0)
+    {
+        context.info->setPixmap(QPixmap(":/images/buqinag.png"));
+    }
+    else
+    {
+        if(flag)
+        {
+            context.info->setPixmap(QPixmap(":/images/jiaodizhu.png"));
+        }
+        else
+        {
+            context.info->setPixmap(QPixmap(":/images/qiangdizhu.png"));
+        }
+    }
+    context.info->show();
 }
 
 void GamePanel::paintEvent(QPaintEvent *ev)

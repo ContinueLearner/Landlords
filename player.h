@@ -76,6 +76,12 @@ public:
 
 
 signals:
+    // 通知已经叫地主下注
+    void notifyGrabLordBet(Player* player, int bet);
+    // 通知已经出牌
+    void notifyPlayHand(Player* player, Cards& card);
+    // 通知已经发牌了
+    void notifyPickCards(Player* player, const Cards& cards);
 
 protected:
     int m_score = 0;

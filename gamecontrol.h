@@ -6,6 +6,23 @@
 #include "userplayer.h"
 #include "cards.h"
 
+struct BetRecord
+{
+    BetRecord()
+    {
+        reset();
+    }
+    void reset()
+    {
+        player = nullptr;
+        bet = 0;
+        times = 0;
+    }
+    Player* player;
+    int bet;
+    int times;  // 第几次叫地主
+};
+
 class GameControl : public QObject
 {
     Q_OBJECT
@@ -54,21 +71,23 @@ public:
     // 准备叫地主
     void startLordCard();
     // 成为地主
-
+    void becomeLord(Player *player, int bet);
     // 清空所有玩家的得分
     void clearPlayerScore();
     // 得到玩家下注的最高分数
-
+    int getPlayerMaxBet();
 
     // 处理叫地主
-
+    void onGrabBet(Player* player, int bet);
 
     // 处理出牌
 
 signals:
-    // 通知玩家抢地主了
     void playerStatusChanged(Player* player, PlayerStatus status);
-
+    // 通知玩家抢地主了
+    void notifyGrabLordBet(Player* player, int bet, bool flag);
+    // 游戏状态变化
+    void gameStatusChanged(GameStatus status);
 
 private:
     Robot* m_robotLeft = nullptr;
@@ -78,7 +97,9 @@ private:
     Player* m_pendPlayer = nullptr;
     Cards m_pendCards;
     Cards m_allCards;
+    BetRecord m_betRecord;
 
+    int m_curBet = 0;
 };
 
 #endif // GAMECONTROL_H

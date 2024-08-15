@@ -101,11 +101,22 @@ Player *Player::getNextPlayer()
     return m_next;
 }
 
+void Player::grabLordBet(int point)
+{
+    emit notifyGrabLordBet(this,point);
+}
+
 void Player::storeDispatchCard(const Card &card)
 {
     m_cards.add(card);
     Cards cs;
     cs.add(card);
+}
+
+void Player::storeDispatchCard(const Cards &cards)
+{
+    m_cards.add(cards);
+    emit notifyPickCards(this, cards);
 }
 
 
