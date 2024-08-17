@@ -81,6 +81,7 @@ public:
     void onGrabBet(Player* player, int bet);
 
     // 处理出牌
+    void onPlayHand(Player *player, Cards &card);
 
 signals:
     void playerStatusChanged(Player* player, PlayerStatus status);
@@ -88,6 +89,10 @@ signals:
     void notifyGrabLordBet(Player* player, int bet, bool flag);
     // 游戏状态变化
     void gameStatusChanged(GameStatus status);
+    // 通知玩家出牌了
+    void notifyPlayHand(Player* player, Cards& card);
+    // 给玩家传递出牌数据
+    void pendingInfo(Player* player, Cards& card);
 
 private:
     Robot* m_robotLeft = nullptr;

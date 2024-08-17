@@ -27,20 +27,25 @@ public:
     void setPlayer(Player* player);
     Player* getPlayer();
 
+    // 模拟扑克牌的点击事件
+    void clicked();
+
 protected:
     void paintEvent(QPaintEvent * event);
     void mousePressEvent(QMouseEvent *event);
+
+
+signals:
+    void cardSelected(Qt::MouseButton button);
 
 private:
     QPixmap m_front;
     QPixmap m_back;
 
-    bool isFront;
-    bool isSelected;
-
+    bool m_isfront = true;
+    bool m_isSelect = false;
     Card m_card;
-
-    Player* player;
+    Player* m_owner = nullptr;
 signals:
 };
 

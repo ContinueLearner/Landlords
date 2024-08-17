@@ -1,5 +1,6 @@
 #include "cardpanel.h"
 
+#include <QMouseEvent>
 #include <QPainter>
 
 CardPanel::CardPanel(QWidget *parent)
@@ -24,22 +25,22 @@ QPixmap CardPanel::getQPixmap()
 
 void CardPanel::setFront(bool flag)
 {
-    this->isFront = flag;
+    this->m_isfront = flag;
 }
 
 bool CardPanel::getFront()
 {
-    return this->isFront;
+    return this->m_isfront;
 }
 
 void CardPanel::setSelected(bool flag)
 {
-    this->isSelected = flag;
+    this->m_isSelect = flag;
 }
 
 bool CardPanel::getSelected()
 {
-    return this->isSelected;
+    return this->m_isSelect;
 }
 
 void CardPanel::setCard(Card &card)
@@ -54,18 +55,23 @@ Card CardPanel::getCard()
 
 void CardPanel::setPlayer(Player *player)
 {
-    this->player = player;
+    this->m_owner = player;
 }
 
 Player *CardPanel::getPlayer()
 {
-    return this->player;
+    return this->m_owner;
+}
+
+void CardPanel::clicked()
+{
+    emit cardSelected(Qt::LeftButton);
 }
 
 void CardPanel::paintEvent(QPaintEvent *event)
 {
     QPainter p(this);
-    if(isFront)
+    if(m_isfront)
     {
         p.drawPixmap(rect(),this->m_front);
     }
@@ -77,7 +83,7 @@ void CardPanel::paintEvent(QPaintEvent *event)
 
 void CardPanel::mousePressEvent(QMouseEvent *event)
 {
-
+    emit cardSelected(event->button());
 }
 
 

@@ -73,6 +73,8 @@ public:
     // 虚函数
     virtual void prepareCallLord();
     virtual void preparePlayHand();
+    virtual void thinkCallLord();
+    virtual void thinkPlayHand();
 
 
 signals:

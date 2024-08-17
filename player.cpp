@@ -111,6 +111,7 @@ void Player::storeDispatchCard(const Card &card)
     m_cards.add(card);
     Cards cs;
     cs.add(card);
+    emit notifyPickCards(this, cs);
 }
 
 void Player::storeDispatchCard(const Cards &cards)
@@ -129,6 +130,12 @@ Cards Player::getCards()
 void Player::clearCards()
 {
     m_cards.clear();
+}
+
+void Player::playHand(Cards &cards)
+{
+    m_cards.remove(cards);
+    emit notifyPlayHand(this, cards);
 }
 
 
@@ -154,6 +161,16 @@ void Player::prepareCallLord()
 }
 
 void Player::preparePlayHand()
+{
+
+}
+
+void Player::thinkCallLord()
+{
+
+}
+
+void Player::thinkPlayHand()
 {
 
 }

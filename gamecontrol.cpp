@@ -1,4 +1,5 @@
 #include "gamecontrol.h"
+#include "playhand.h"
 #include <QRandomGenerator>
 #include <QTimer>
 #include <QDebug>
@@ -49,6 +50,16 @@ void GameControl::playerInit()
     connect(m_user, &UserPlayer::notifyGrabLordBet, this, &GameControl::onGrabBet);
     connect(m_robotLeft, &UserPlayer::notifyGrabLordBet, this, &GameControl::onGrabBet);
     connect(m_robotRight, &UserPlayer::notifyGrabLordBet, this, &GameControl::onGrabBet);
+
+    // 传递出牌玩家对象和玩家打出的牌
+    connect(this, &GameControl::pendingInfo, m_robotLeft, &Robot::storePendingInfo);
+    connect(this, &GameControl::pendingInfo, m_robotRight, &Robot::storePendingInfo);
+    connect(this, &GameControl::pendingInfo, m_user, &Robot::storePendingInfo);
+
+    // 处理玩家出牌
+    connect(m_robotLeft, &Robot::notifyPlayHand, this, &GameControl::onPlayHand);
+    connect(m_robotRight, &Robot::notifyPlayHand, this, &GameControl::onPlayHand);
+    connect(m_user, &Robot::notifyPlayHand, this, &GameControl::onPlayHand);
 }
 
 
@@ -219,5 +230,66 @@ void GameControl::onGrabBet(Player *player, int bet)
     emit playerStatusChanged(m_currPlayer, ThinkingForCallLord);
     m_currPlayer->prepareCallLord();
 }
+
+void GameControl::onPlayHand(Player *player, Cards &card)
+{
+    // 1. 将玩家出牌的信号转发给主界面
+    emit notifyPlayHand(player, card);
+    // 2. 如果不是空牌, 给其他玩家发送信号, 保存出牌玩家对象和打出的牌
+    if(!card.isEmpty())
+    {
+        m_pendCards = card;
+        m_pendPlayer = player;
+        emit pendingInfo(player, card);
+    }
+    // 如果有炸弹, 低分翻倍
+    PlayHand::HandType type = PlayHand(card).getHandType();
+    if(type == PlayHand::Hand_Bomb || type == PlayHand::Hand_Bomb_Jokers)
+    {
+        m_curBet = m_curBet * 2;
+    }
+
+    // 3. 如果玩家的牌出完了, 计算本局游戏的总分
+    if(player->getCards().isEmpty())
+    {
+        Player* prev = player->getPrevPlayer();
+        Player* next = player->getNextPlayer();
+        if(player->getRole() == Player::Lord)
+        {
+            player->setScore(player->getScore() + 2 * m_curBet);
+            prev->setScore(prev->getScore() - m_curBet);
+            next->setScore(next->getScore() - m_curBet);
+            player->setWin(true);
+            prev->setWin(false);
+            next->setWin(false);
+        }
+        else
+        {
+            player->setWin(true);
+            player->setScore(player->getScore() + m_curBet);
+            if(prev->getRole() == Player::Lord)
+            {
+                prev->setScore(prev->getScore() - 2 * m_curBet);
+                next->setScore(next->getScore() + m_curBet);
+                prev->setWin(false);
+                next->setWin(true);
+            }
+            else
+            {
+                next->setScore(next->getScore() - 2 * m_curBet);
+                prev->setScore(prev->getScore() + m_curBet);
+                next->setWin(false);
+                prev->setWin(true);
+            }
+        }
+        emit playerStatusChanged(player, GameControl::Winning);
+        return;
+    }
+    // 4. 牌没有出完, 下一个玩家继续出牌
+    m_currPlayer = player->getNextPlayer();
+    m_currPlayer->preparePlayHand();
+    emit playerStatusChanged(m_currPlayer, GameControl::ThinkingForPlayHand);
+}
+
 
 

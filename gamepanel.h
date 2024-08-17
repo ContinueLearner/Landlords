@@ -10,6 +10,7 @@
 #include <QMap>
 #include <QLabel>
 #include <QTimer>
+#include "animationwindow.h"
 
 namespace Ui {
 class GamePanel;
@@ -22,7 +23,7 @@ class GamePanel : public QMainWindow
 public:
     explicit GamePanel(QWidget *parent = nullptr);
     ~GamePanel();
-
+    enum AnimationType{ShunZi, LianDui, Plane, JokerBomb, Bomb, Bet};
     // 初始化游戏控制类信息
     void gameControlInit();
     // 更新分数面板的分数
@@ -47,12 +48,25 @@ public:
     void disposeCard(Player* player, const Cards& cards);
     // 更新扑克牌在窗口中的显示
     void updatePlayerCards(Player* player);
+    // 加载玩家头像
+    QPixmap loadRoleImage(Player::Sex sex, Player::Direction direct, Player::Role role);
 
     void onDispatchCard();
     // 处理玩家状态的变化
     void onPlayerStatusChanged(Player* player, GameControl::PlayerStatus status);
     // 处理玩家抢地主
     void onGrabLordBet(Player* player, int bet, bool flag);
+    // 处理玩家的出牌
+    void onDisposePlayHand(Player* player, Cards& cards);
+    // 处理玩家选牌
+    void onCardSelected(Qt::MouseButton button);
+
+
+
+    // 显示特效动画
+    void showAnimation(AnimationType type, int bet = 0);
+    // 隐藏玩家打出的牌
+    void hidePlayerDropCards(Player* player);
 protected:
     void paintEvent(QPaintEvent* ev);
 
@@ -90,6 +104,9 @@ private:
     QPoint m_baseCardPos;
     GameControl::GameStatus m_gameStatus;
     QTimer* m_timer;
+    AnimationWindow* m_animation;
+    CardPanel* m_curSelCard;
+    QSet<CardPanel*> m_selectCards;
 };
 
 #endif // GAMEPANEL_H
