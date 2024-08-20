@@ -56,7 +56,9 @@ void GameControl::playerInit()
     connect(this, &GameControl::pendingInfo, m_robotRight, &Robot::storePendingInfo);
     connect(this, &GameControl::pendingInfo, m_user, &Robot::storePendingInfo);
 
-    // 处理玩家出牌
+    //问题就是没收到信号
+    //QObject::connect: Cannot queue arguments of type 'Cards&'
+    //(Make sure 'Cards&' is registered using qRegisterMetaType().)
     connect(m_robotLeft, &Robot::notifyPlayHand, this, &GameControl::onPlayHand);
     connect(m_robotRight, &Robot::notifyPlayHand, this, &GameControl::onPlayHand);
     connect(m_user, &Robot::notifyPlayHand, this, &GameControl::onPlayHand);

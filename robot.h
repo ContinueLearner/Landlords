@@ -1,8 +1,8 @@
 #ifndef ROBOT_H
 #define ROBOT_H
 
-#include <QObject>
 #include "player.h"
+#include <QObject>
 
 class Robot : public Player
 {

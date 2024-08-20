@@ -161,5 +161,47 @@ CardList Cards::toCardList(SortType type)
 
 void Cards::printAllCardInfo()
 {
-
+    QString text;
+    char pts[] = "JQKA2";
+    for(auto it = m_cards.begin(); it != m_cards.end(); ++it)
+    {
+        QString msg;
+        Card::CardPoint pt = it->getPoint();
+        Card::CardSuit suit = it->getSuit();
+        if(suit == Card::CardSuit::Club)
+        {
+            msg = "梅花";
+        }
+        else if(suit == Card::CardSuit::Diamond)
+        {
+            msg = "方片";
+        }
+        else if(suit == Card::CardSuit::Heart)
+        {
+            msg = "红桃";
+        }
+        else
+        {
+            msg = "黑桃";
+        }
+        if(pt>=Card::Point_3 && pt <= Card::Point_10)
+        {
+            msg = QString("%1%2").arg(msg).arg(pt+2);
+        }
+        else if(pt >= Card::Point_J && pt <= Card::Point_2)
+        {
+            msg = QString("%1%2").arg(msg).arg(pts[pt-Card::Point_J]);
+        }
+        if(pt == Card::Point_BJ)
+        {
+            msg = "Big Joker";
+        }
+        if(pt == Card::Point_SJ)
+        {
+            msg = "Small Joker";
+        }
+        msg += "  ";
+        text += msg;
+    }
+    qDebug() << text;
 }

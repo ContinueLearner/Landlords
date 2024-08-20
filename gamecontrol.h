@@ -103,8 +103,8 @@ private:
     Cards m_pendCards;
     Cards m_allCards;
     BetRecord m_betRecord;
-
     int m_curBet = 0;
+
 };
 
 #endif // GAMECONTROL_H

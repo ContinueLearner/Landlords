@@ -4,8 +4,6 @@
 
 #include <QSet>
 
-
-
 class Cards
 {
 public:

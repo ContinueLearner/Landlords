@@ -70,6 +70,7 @@ void CardPanel::clicked()
 
 void CardPanel::paintEvent(QPaintEvent *event)
 {
+    Q_UNUSED(event);
     QPainter p(this);
     if(m_isfront)
     {

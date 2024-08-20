@@ -11,6 +11,9 @@
 #include <QLabel>
 #include <QTimer>
 #include "animationwindow.h"
+#include "bgmcontrol.h"
+#include "countdown.h"
+#include <QDebug>
 
 namespace Ui {
 class GamePanel;
@@ -60,15 +63,23 @@ public:
     void onDisposePlayHand(Player* player, Cards& cards);
     // 处理玩家选牌
     void onCardSelected(Qt::MouseButton button);
-
-
+    // 处理用户玩家出牌
+    void onUserPlayHand();
+    // 用户玩家放弃出牌
+    void onUserPass();
 
     // 显示特效动画
     void showAnimation(AnimationType type, int bet = 0);
     // 隐藏玩家打出的牌
     void hidePlayerDropCards(Player* player);
+    // 显示玩家的最终得分
+    void showEndingScorePanel();
+    // 初始化闹钟倒计时
+    void initCountDown();
+
 protected:
     void paintEvent(QPaintEvent* ev);
+    void mouseMoveEvent(QMouseEvent* ev);
 
 private:
     enum CardAlign{Horizontal, Vertical};
@@ -107,6 +118,10 @@ private:
     AnimationWindow* m_animation;
     CardPanel* m_curSelCard;
     QSet<CardPanel*> m_selectCards;
+    QRect m_cardsRect;
+    QHash<CardPanel*, QRect> m_userCards;
+    CountDown* m_countDown;
+    BGMControl* m_bgm;
 };
 
 #endif // GAMEPANEL_H

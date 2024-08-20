@@ -1,18 +1,18 @@
 #include "robot.h"
-
-#include "qdebug.h"
+#include "strategy.h"
 #include "robotgraplord.h"
 #include "robotplayhand.h"
-#include "strategy.h"
+#include <QDebug>
+#include <QMetaType>
 
-Robot::Robot(QObject *parent)
-    : Player{parent}
+Robot::Robot(QObject *parent) : Player(parent)
 {
-    this->m_type = Type::Robot;
+    m_type = Player::Robot;
 }
 
 void Robot::prepareCallLord()
 {
+    qRegisterMetaType<Cards*>("Cards*");
     RobotGrapLord* subThread = new RobotGrapLord(this);
     connect(subThread, &RobotGrapLord::finished, this, [=](){
         qDebug() << "RobotGrapLord 子线程对象析构..." << ", Robot name: " << this->getName();
@@ -23,6 +23,7 @@ void Robot::prepareCallLord()
 
 void Robot::preparePlayHand()
 {
+    qRegisterMetaType<Cards*>("Cards*");
     RobotPlayHand* subThread = new RobotPlayHand(this);
     connect(subThread, &RobotGrapLord::finished, this, [=](){
         qDebug() << "RobotPlayHand 子线程对象析构..." << ", Robot name: " << this->getName();
@@ -91,4 +92,3 @@ void Robot::thinkPlayHand()
     Cards cs = st.makeStrategy();
     playHand(cs);
 }
-
